@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal de Evento</title>
+    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="../../CSS/style.css" rel="stylesheet"/>
+     
+    <script type="module">
+      import { Evento } from "../../../JS/Model/Evento.js";
+      const evento = new Evento();
+      evento.get_All_Evento();
+
+      window.delete_Evento = function(id) {
+            evento.delete_Evento(id);
+        };
+  </script>
+  
+</head>
+<body>
+
+    <div id="navbar-container"></div>
+
+    <br>
+
+    <div id="evento-container">
+
+      <h1>Eventos</h1>
+
+
+      <div id="datos-container"></div>
+    </div>
+    
+    <script>
+        $(document).ready(function() {
+          $("#navbar-container").load("../../Views/navbar.html");
+        });
+      </script>
+
+</body>
+</html>

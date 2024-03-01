@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal de Participantes</title>
+    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="../../CSS/style.css" rel="stylesheet"/>
+    
+
+    <script type="module">
+      import { Participante } from "../../../JS/Model/Participante.js";
+      const participante = new Participante();
+      participante.get_All_Participante();
+      </script>
+</head>
+<body>
+    <div id="navbar-container"></div>
+
+    <br>
+
+    <div id="Participante-container">
+
+      <h1>Participantes</h1>
+
+      <br><br><br>
+
+      <div id="datos-container"></div>
+
+    </div>
+    
+    <script>
+      $(document).ready(function() {
+        $("#navbar-container").load("../../Views/navbar.html");
+      });
+    </script>
+
+</body>
+</html>

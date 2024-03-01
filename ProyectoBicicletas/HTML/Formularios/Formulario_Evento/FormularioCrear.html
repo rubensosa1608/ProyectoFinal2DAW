@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link href="../../../HTML/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../../../HTML/CSS/style.css" rel="stylesheet"/>
+    <script type="module">
+        import { Evento } from "../../../JS/Model/Evento.js";
+        const evento = new Evento();
+
+        window.create_Evento = function() {
+            evento.create_Evento();
+        };
+    </script>
+</head>
+<body>
+
+    <br><br>
+
+    <div class="container">
+        <h1>Crear Evento</h1>
+        <form>
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre" placeholder="Ingrese el nombre">
+            </div>
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <textarea class="form-control" id="descripcion" rows="3" placeholder="Ingrese la descripción"></textarea>
+            </div>
+            <div class="form-group">
+                <label for="fecha_inicio">Fecha de inicio:</label>
+                <input type="date" class="form-control" id="fecha_inicio">
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary" onclick="create_Evento()">Enviar</button>
+
+            <button style="margin-left: 15px;" type="reset" class="btn btn-secondary" onclick="window.location.href = '../../Views/Evento/Index.html'">Volver</button>
+        </form>
+    </div>
+
+</body>
+</html>
