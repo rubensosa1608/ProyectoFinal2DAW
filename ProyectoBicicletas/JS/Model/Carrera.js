@@ -44,5 +44,32 @@ export class Carrera{
         xhttp.send();
     }
 
+    create_Carrera(){
+        
+        var $nombre = document.querySelector('#nombre').value;
+        var $fecha_inicio = document.querySelector('#fecha_inicio').value;
+        var $ubicacion = document.querySelector('#ubicacion').value;
+        var $id_categoria_carrera = document.querySelector('#categorias').value;
+        var $id_eventos = document.querySelector('#eventos').value;
+
+        let datos = "&nombre=" + $nombre + "&fecha_inicio=" + $fecha_inicio + "&ubicacion=" + $ubicacion + "&id_categoria_carrera=" + $id_categoria_carrera + "&id_evento=" + $id_eventos;
+        let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Carrera/Create_Carrera.php?${datos}`;
+        let xhttp = Conexion.crearXMLHttpRequest("POST", url);
+
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                console.log(this.responseText);
+                if(this.responseText == "true"){
+                    window.location.href = "../../Views/Carrera/Index.html";
+                    alert("Carrera creado correctamente.");
+                }else{
+                    alert("Error al crear el carrera.");
+                }
+            }
+        };
+
+        xhttp.send();
+    }
+
 }
 

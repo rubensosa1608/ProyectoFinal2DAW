@@ -18,7 +18,7 @@ class Carrera{
 
             echo json_encode($resultado);
         }else{
-            return false;
+            echo false;
         }
     }
 
@@ -54,9 +54,9 @@ class Carrera{
         $sentencia->bindParam(':id_evento', $id_evento);
 
         if($sentencia->execute()){
-            return true;
+            echo "true";
         }else{
-            return false;
+            echo "false";
         }
     }
 
@@ -88,9 +88,9 @@ class Carrera{
         $sentencia->bindParam(':id', $id);
 
         if($sentencia->execute()){
-            return true;
+            echo "true";
         }else {
-            return false;
+            echo "false";
         }
     }
 }

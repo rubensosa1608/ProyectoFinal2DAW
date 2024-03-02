@@ -10,8 +10,16 @@
      
     <script type="module">
       import { Evento } from "../../../JS/Model/Evento.js";
+      import { tablaEvento } from "../../../JS/Tablas/TablaEvento.js";
       const evento = new Evento();
-      evento.get_All_Evento();
+      
+      evento.get_All_Evento()
+      .then(eventos => {
+        tablaEvento(eventos);
+    })
+    .catch(error => {
+        console.error('Error:', error.message);
+    });
 
       window.delete_Evento = function(id) {
             evento.delete_Evento(id);

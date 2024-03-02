@@ -1,5 +1,5 @@
 export function tablaCarrera(carreras){
-    var tabla = "<table><tr><th>Nombre</th><th>fecha de inicio</th><th>Ubicación</th><th>Categoria de carrera</th><th>Evento</th><th>Acciones</th><th><button class='btn btn-success' href='../../HTML/Formularios/Formulario_Carrera/FormularioCrear.html'>Añadir</button></th></tr>";
+    var tabla = "<table><tr><th>Nombre</th><th>fecha de inicio</th><th>Ubicación</th><th>Categoria de carrera</th><th>Evento</th><th>Acciones</th><th><a class='btn btn-success' href='../../../HTML/Formularios/Formulario_Carrera/FormularioCrear.html'>Añadir<a/></th></tr>";
 
     carreras.forEach(carrera => {
         tabla += "<tr>";

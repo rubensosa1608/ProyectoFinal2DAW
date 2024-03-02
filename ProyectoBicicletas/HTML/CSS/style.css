@@ -79,3 +79,7 @@ body{
   margin: 0 5px;
 }
 
+select option {
+  color: black; /* Cambia el color del texto de las opciones */
+}
+

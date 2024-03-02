@@ -15,7 +15,7 @@
 
                 echo json_encode($resultado);
             }else{
-                return false;
+                echo false;
             }
 
         }
