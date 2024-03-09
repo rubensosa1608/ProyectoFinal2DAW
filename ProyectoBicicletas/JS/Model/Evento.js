@@ -1,4 +1,4 @@
-
+import { Validaciones } from "./Validaciones.js";
 import { Conexion } from "../Conexion/Conexion.js";
 
 export class Evento{
@@ -71,6 +71,12 @@ export class Evento{
         var $descripcion = document.querySelector('#descripcion').value;
         var $fecha_inicio = document.querySelector('#fecha_inicio').value;
 
+        var validaciones = new Validaciones();
+
+        if(!validaciones.validarCamposEventos($nombre, $descripcion, $fecha_inicio)){
+            return;
+        }
+
         let datos = "&nombre=" + $nombre + "&descripcion=" + $descripcion + "&fecha_inicio=" + $fecha_inicio;
         let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Evento/Create_Evento.php?${datos}`;
         let xhttp = Conexion.crearXMLHttpRequest("POST", url);
@@ -96,6 +102,12 @@ export class Evento{
         var $descripcion = document.querySelector('#descripcion').value;
         var $fecha_inicio = document.querySelector('#fecha_inicio').value;
 
+        var validaciones = new Validaciones();
+
+        if(!validaciones.validarCamposEventos($nombre, $descripcion, $fecha_inicio)){
+            return;
+        }
+
         let datos = "&nombre=" + $nombre + "&descripcion=" + $descripcion + "&fecha_inicio=" + $fecha_inicio + "&id=" + $id;
 
         let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Evento/Update_Evento.php?${datos}`;
@@ -119,5 +131,4 @@ export class Evento{
         xhttp.send();
     }
     
-   
 }

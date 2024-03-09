@@ -83,3 +83,10 @@ select option {
   color: black; /* Cambia el color del texto de las opciones */
 }
 
+#welcome-container{
+  text-align: center;
+  color: white;
+  font-size: 30px;
+  margin-left: 100px;
+  margin-right: 100px;
+}

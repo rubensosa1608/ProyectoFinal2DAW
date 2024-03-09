@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link href="../../../HTML/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="../../../HTML/CSS/style.css" rel="stylesheet"/>
+    <script type="module">
+
+        import { Carrera } from "../../../JS/Model/Carrera.js";
+        import { Evento } from "../../../JS/Model/Evento.js";
+        import { Categoria_Carrera } from "../../../JS/Model/Categoria_Carrera.js";
+
+        const carrera = new Carrera();
+        const evento = new Evento();
+        const categoria = new Categoria_Carrera();
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const id = urlParams.get('id');
+
+        carrera.get_Carrera_By_Id(id)
+        .then(carrera => {
+            document.getElementById('nombre').value = carrera[0].Nombre;
+            document.getElementById('fecha_inicio').value = carrera[0].Fecha_inicio;
+            document.getElementById('ubicacion').value = carrera[0].Ubicacion;
+        
+    categoria.get_All_Categoria_Carrera()
+    .then(categorias => {
+            const selectCategorias = document.getElementById('categorias');
+            selectCategorias.innerHTML = '';
+
+            categorias.forEach(categoria => {
+                const option = document.createElement('option');
+                option.value = categoria.Id; 
+                option.textContent = categoria.Nombre; 
+                selectCategorias.appendChild(option);
+            });
+
+      
+        selectCategorias.value = carrera[0].Id_Categoria_Carrera;
+    })
+    .catch(error => {
+        console.error('Error al cargar las categorías:', error);
+    });
+
+
+    evento.get_All_Evento()
+    .then(eventos => {
+        const selectEventos = document.getElementById('eventos');
+        selectEventos.innerHTML = '';
+
+        eventos.forEach(evento => {
+            const option = document.createElement('option');
+            option.value = evento.Id;
+            option.textContent = evento.Nombre;
+            selectEventos.appendChild(option);
+        });
+
+       
+        selectEventos.value = carrera[0].Id_Evento;
+    })
+    .catch(error => {
+        console.error('Error al cargar los eventos:', error);
+    });
+});
+
+        window.update_Carrera = function() {
+            carrera.update_Carrera(id);
+        };
+    </script>
+</head>
+<body>
+
+    <br><br>
+
+    <div class="container">
+        <h1>Actualizar Carrera</h1>
+        <form>
+            <div class="form-group">
+                <label for="nombre">Nombre:</label>
+                <input type="text" class="form-control" id="nombre">
+            </div>
+            <div class="form-group">
+                <label for="fecha_inicio">Fecha de inicio:</label>
+                <input type="date" class="form-control" id="fecha_inicio">
+            </div>
+            <div class="form-group">
+                <label for="ubicacion">Ubicación:</label>
+                <input type="text" class="form-control" id="ubicacion">
+            </div>
+            <div class="form-group">
+                <label for="categorias">Categorías:</label>
+                <select class="form-control" id="categorias">
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="eventos">Eventos:</label>
+                <select class="form-control" id="eventos">
+                   
+                </select>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary" onclick="update_Carrera()">Editar</button>
+
+            <button style="margin-left: 15px;" type="reset" class="btn btn-secondary" onclick="window.location.href = '../../Views/Carrera/Index.html'">Volver</button>
+
+        </form>
+    </div>
+
+</body>
+</html>
