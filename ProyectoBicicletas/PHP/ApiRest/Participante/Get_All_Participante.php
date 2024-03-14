@@ -1,10 +1,14 @@
 <?php
+
+// Permitir acceso desde cualquier origen
 header("Access-Control-Allow-Origin: *");
 
-    require_once('../../Model/Participante.php');
+require_once '../../Model/Participante.php';
 
-    if($_SERVER['REQUEST_METHOD'] == 'GET'){
-        Participante::get_All_Participante();
-    }
+// Verificar si la solicitud es de tipo GET
+if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+    // Llamar a la función para obtener todos los participantes
+    Participante::get_All_Participante();
+}
 
 ?>

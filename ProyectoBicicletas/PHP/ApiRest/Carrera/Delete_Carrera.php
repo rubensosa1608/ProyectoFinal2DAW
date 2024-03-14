@@ -8,11 +8,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
     exit;
 }
 
+require_once '../../Model/Carrera.php';
 
-    require_once('../../Model/Carrera.php');
-
-    if($_SERVER['REQUEST_METHOD'] == 'DELETE' && isset($_GET['id'])){
-        Carrera::delete_Carrera($_GET['id']);
-    }
+// Verifica si la solicitud es de tipo DELETE y si se proporcionó el parámetro 'id'
+if ($_SERVER['REQUEST_METHOD'] == 'DELETE' && isset($_GET['id'])) {
+    // Llama a la función para eliminar una carrera
+    Carrera::delete_Carrera($_GET['id']);
+}
 
 ?>

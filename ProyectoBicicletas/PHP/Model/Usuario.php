@@ -4,6 +4,7 @@ require_once('../../ConnectionDB/ConnectionDB.php');
 
 class Usuario{
 
+    // Obtiene todos los usuarios
     public static function get_All_Usuario(){
         
         $database = new ConnectionDB();
@@ -22,6 +23,7 @@ class Usuario{
 
     }
 
+    // Comprueba si el usuario existe
     public static function comprobarUsuario($nombre, $password){
         $database = new ConnectionDB();
         $conexion = $database->getConnect();    
@@ -41,3 +43,5 @@ class Usuario{
     }
 
 }
+
+?>

@@ -2,27 +2,30 @@
 
 require_once('../../ConnectionDB/ConnectionDB.php');
 
-class Token{
+class Token {
 
-    public static function get_All_Token(){
-        
+    // Obtiene todos los tokens.
+    public static function get_All_Token() {
         $database = new ConnectionDB();
         $conexion = $database->getConnect();
 
         $sentencia = $conexion->prepare('SELECT * FROM token');
 
-        if($sentencia->execute()){
-            
+        if ($sentencia->execute()) {
             $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-
             echo json_encode($resultado);
-        }else{
-
+        } else {
             echo "false";
         }
     }
 
-    public static function generarToken(){
-        
+    // Genera un nuevo token.
+    public static function generarToken() {
+        // Aquí debes escribir la lógica para generar un nuevo token
+        // Por ejemplo:
+        $token = bin2hex(random_bytes(16)); // Genera un token aleatorio hexadecimal de 16 bytes
+        return $token;
     }
 }
+
+?>

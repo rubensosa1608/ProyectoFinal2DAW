@@ -1,11 +1,10 @@
+export class Conexion {
 
-export class Conexion{
-
-    //Funcion para crear el objeto XMLHttpRequest.
-    static crearXMLHttpRequest(method,url) {
-        var xhttp = null;
+    // Función para crear el objeto XMLHttpRequest.
+    static crearXMLHttpRequest(method, url) {
+        let xhttp = null;
         if (window.XMLHttpRequest || window.ActiveXObject) {
-            if (window.ActiveXObject) { 
+            if (window.ActiveXObject) {
                 try {
                     xhttp = new ActiveXObject("Msxml2.XMLHTTP");
                     xhttp.open(method, url, true);
@@ -13,7 +12,7 @@ export class Conexion{
                     xhttp = new ActiveXObject("Microsoft.XMLHTTP");
                     xhttp.open(method, url, true);
                 }
-            } else { 
+            } else {
                 xhttp = new XMLHttpRequest();
                 xhttp.open(method, url, true);
             }
