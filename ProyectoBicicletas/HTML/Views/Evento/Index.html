@@ -5,47 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Principal de Evento</title>
     <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="../../CSS/style.css" rel="stylesheet"/>
-     
-    <script type="module">
-      import { Evento } from "../../../JS/Model/Evento.js";
-      import { tablaEvento } from "../../../JS/Tablas/TablaEvento.js";
-      const evento = new Evento();
-      
-      evento.get_All_Evento()
-      .then(eventos => {
-        tablaEvento(eventos);
-    })
-    .catch(error => {
-        console.error('Error:', error.message);
-    });
-
-      window.delete_Evento = function(id) {
-            evento.delete_Evento(id);
-        };
-  </script>
-  
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 
-    <div id="navbar-container"></div>
+<div id="navbar-container"></div>
 
-    <br>
+<br>
 
-    <div id="evento-container">
+<div id="evento-container">
 
-      <h1>Eventos</h1>
+    <h1>Eventos</h1>
 
+    <div id="datos-container"></div>
+</div>
 
-      <div id="datos-container"></div>
-    </div>
-    
-    <script>
-        $(document).ready(function() {
-          $("#navbar-container").load("../../Views/navbar.html");
-        });
-      </script>
+<script type="module">
+  import { Evento } from "../../../JS/Model/Evento.js";
+  import { tablaEvento } from "../../../JS/Tablas/TablaEvento.js";
 
+  $(document).ready(function() {
+      const evento = new Evento();
+      evento.get_All_Evento()
+          .then(eventos => {
+              tablaEvento(eventos);
+          })
+          .catch(error => {
+              console.error('Error:', error.message);
+          });
+
+      window.delete_Evento = function(id) {
+          evento.delete_Evento(id);
+      };
+  });
+
+  $(document).ready(function() {
+      $("#navbar-container").load("../../Views/navbar.html");
+  });
+</script>
 </body>
 </html>

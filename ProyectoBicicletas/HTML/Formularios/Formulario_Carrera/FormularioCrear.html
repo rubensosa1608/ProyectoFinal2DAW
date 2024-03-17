@@ -6,57 +6,6 @@
     <title>Formulario</title>
     <link href="../../../HTML/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="../../../HTML/CSS/style.css" rel="stylesheet"/>
-    <script type="module">
-
-        import { Carrera } from "../../../JS/Model/Carrera.js";
-        import { Evento } from "../../../JS/Model/Evento.js";
-        import { Categoria_Carrera } from "../../../JS/Model/Categoria_Carrera.js";
-
-        const carrera = new Carrera();
-        const evento = new Evento();
-        const categoria = new Categoria_Carrera();
-       
-
-        categoria.get_All_Categoria_Carrera()
-        .then(categorias => {
-           
-            const select = document.getElementById('categorias');
-            select.innerHTML = '';
-
-            categorias.forEach(categoria => {
-                const option = document.createElement('option');
-                option.value = categoria.Id; 
-                option.textContent = categoria.Nombre; 
-                select.appendChild(option);
-            });
-        })
-        .catch(error => {
-            console.error('Error al cargar las categorías:', error);
-        });
-
-
-        evento.get_All_Evento()
-        .then(eventos => {
-
-            const select = document.getElementById('eventos');
-            select.innerHTML = '';
-
-            eventos.forEach(evento => {
-                const option = document.createElement('option');
-                option.value = evento.Id;
-                option.textContent = evento.Nombre;
-                select.appendChild(option);
-            });
-
-            })
-        .catch(error => {
-            console.error('Error al cargar los eventos:', error);
-        });
-
-        window.create_Carrera = function() {
-            carrera.create_Carrera();
-        };
-    </script>
 </head>
 <body>
 
@@ -79,24 +28,66 @@
             </div>
             <div class="form-group">
                 <label for="categorias">Categorías:</label>
-                <select class="form-control" id="categorias">
-                </select>
+                <select class="form-control" id="categorias"></select>
             </div>
             <div class="form-group">
                 <label for="eventos">Eventos:</label>
-                <select class="form-control" id="eventos">
-                   
-                </select>
+                <select class="form-control" id="eventos"></select>
             </div>
             <br>
-            <button type="submit" class="btn btn-primary" onclick="create_Carrera()">Crear</button>
-
-            <button style="margin-left: 15px;" type="reset" class="btn btn-secondary" onclick="window.location.href = '../../Views/Carrera/Index.html'">Volver</button>
-
-            <button style="margin-left: 15px;" type="reset" class="btn btn-danger">Limpiar</button>
-
+            <button type="button" class="btn btn-primary" onclick="create_Carrera()">Crear</button>
+            <a href="../../Views/Carrera/Index.html" class="btn btn-secondary" role="button" style="margin-left: 15px;">Volver</a>
+            <button type="reset" class="btn btn-danger" style="margin-left: 15px;">Limpiar</button>
         </form>
     </div>
 
+    <script type="module">
+
+        import { Carrera } from "../../../JS/Model/Carrera.js";
+        import { Evento } from "../../../JS/Model/Evento.js";
+        import { Categoria_Carrera } from "../../../JS/Model/Categoria_Carrera.js";
+
+        const carrera = new Carrera();
+        const evento = new Evento();
+        const categoria = new Categoria_Carrera();
+       
+
+        categoria.get_All_Categoria_Carrera()
+        .then(categorias => {
+            const selectCategorias = document.getElementById('categorias');
+            selectCategorias.innerHTML = '';
+
+            categorias.forEach(categoria => {
+                const option = document.createElement('option');
+                option.value = categoria.Id; 
+                option.textContent = categoria.Nombre; 
+                selectCategorias.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Error al cargar las categorías:', error);
+        });
+
+
+        evento.get_All_Evento()
+        .then(eventos => {
+            const selectEventos = document.getElementById('eventos');
+            selectEventos.innerHTML = '';
+
+            eventos.forEach(evento => {
+                const option = document.createElement('option');
+                option.value = evento.Id;
+                option.textContent = evento.Nombre;
+                selectEventos.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Error al cargar los eventos:', error);
+        });
+
+        window.create_Carrera = function() {
+            carrera.create_Carrera();
+        };
+    </script>
 </body>
 </html>

@@ -6,14 +6,6 @@
     <title>Formulario</title>
     <link href="../../../HTML/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
     <link href="../../../HTML/CSS/style.css" rel="stylesheet"/>
-    <script type="module">
-        import { Evento } from "../../../JS/Model/Evento.js";
-        const evento = new Evento();
-
-        window.create_Evento = function() {
-            evento.create_Evento();
-        };
-    </script>
 </head>
 <body>
 
@@ -32,16 +24,22 @@
             </div>
             <div class="form-group">
                 <label for="fecha_inicio">Fecha de inicio:</label>
-                <input type="date" class="form-control" id="fecha_inicio" >
+                <input type="date" class="form-control" id="fecha_inicio">
             </div>
             <br>
-            <button type="submit" class="btn btn-primary" onclick="create_Evento()">Enviar</button>
-
-            <button style="margin-left: 15px;" type="reset" class="btn btn-secondary" onclick="window.location.href = '../../Views/Evento/Index.html'">Volver</button>
-
-            <button style="margin-left: 15px;" type="reset" class="btn btn-danger">Limpiar</button>
+            <button type="button" class="btn btn-primary" onclick="create_Evento()">Enviar</button>
+            <a href="../../Views/Evento/Index.html" class="btn btn-secondary" role="button" style="margin-left: 15px;">Volver</a>
+            <button type="reset" class="btn btn-danger" style="margin-left: 15px;">Limpiar</button>
         </form>
     </div>
 
+    <script type="module">
+        import { Evento } from "../../../JS/Model/Evento.js";
+        const evento = new Evento();
+
+        window.create_Evento = function() {
+            evento.create_Evento();
+        };
+    </script>
 </body>
 </html>

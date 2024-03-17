@@ -2,46 +2,40 @@
 
 require_once('../../ConnectionDB/ConnectionDB.php');
 
-class Usuario{
+class Usuario {
 
     // Obtiene todos los usuarios
-    public static function get_All_Usuario(){
-        
+    public static function getAllUsuarios() {
         $database = new ConnectionDB();
         $conexion = $database->getConnect();    
 
         $sentencia = $conexion->prepare('SELECT * FROM usuario');
 
-        if($sentencia->execute()){
-            
+        if ($sentencia->execute()) {
             $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-
             echo json_encode($resultado);
-        }else{
+        } else {
             echo "false";
         }
-
     }
 
     // Comprueba si el usuario existe
-    public static function comprobarUsuario($nombre, $password){
+    public static function comprobarUsuario($nombre, $password) {
         $database = new ConnectionDB();
         $conexion = $database->getConnect();    
-    
+
         $sentencia = $conexion->prepare('SELECT * FROM usuario WHERE nombre = :nombre');
         $sentencia->bindParam(':nombre', $nombre);
-        
-        if($sentencia->execute()){
-            $usuarioData = $sentencia->fetch(PDO::FETCH_ASSOC);
 
-            if($usuarioData['Contraseña'] == $password){
-                echo "true";
-            }else{
+        if ($sentencia->execute()) {
+            $usuarioData = $sentencia->fetch(PDO::FETCH_ASSOC);
+            if ($usuarioData['Contraseña'] == $password) {
+                echo $usuarioData['Id'] . "," . "true";
+            } else {
                 echo "false";
             }
         }
     }
-
 }
 
 ?>
