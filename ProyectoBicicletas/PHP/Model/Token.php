@@ -39,7 +39,7 @@ class Token {
         $sentencia->bindParam(':fecha_expiracion', $fecha_expiracion);
 
         if ($sentencia->execute()) {
-            echo $token;
+            echo json_encode($token);
         } else {
             echo "false";
         }

@@ -36,10 +36,26 @@ export class Usuario {
 
                     // Crear una instancia de la clase Token y generar el token
                     const token = new Token();
-                    token.generar_Token(respuesta[0]);
+                    token.generar_Token(respuesta[0])
+                        .then(token => {
 
-                    window.location.href = "HTML/Views/Welcome/welcome.html";
-                    alert("Iniciando sesión");
+                            const dataUser = {
+                                userID: respuesta[0],
+                                token: token
+                            };
+                            
+                            // Convierte el objeto en una cadena JSON
+                            const jsonData = JSON.stringify(dataUser);
+                            
+                            // Almacena la cadena JSON en sessionStorage
+                            sessionStorage.setItem('userData', jsonData);
+                            window.location.href = "HTML/Views/Welcome/welcome.html";
+                            alert("Iniciando sesión");
+                        })
+                        .catch(error => {
+                            console.error('Error al generar el token:', error.message);
+                        });
+
                 } else {
                     alert("Error al iniciar sesión");
                 }
