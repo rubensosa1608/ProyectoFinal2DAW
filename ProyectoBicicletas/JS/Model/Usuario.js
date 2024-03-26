@@ -9,6 +9,7 @@ export class Usuario {
         const username = document.querySelector('#username').value;
         const password = document.querySelector('#password').value;
 
+         
         // Crear una instancia de la clase Validaciones
         const validaciones = new Validaciones();
 
@@ -17,7 +18,7 @@ export class Usuario {
             return;
         }
 
-        // Construir los datos para enviar al servidor
+           // Construir los datos para enviar al servidor
         const datos = `&nombre=${username}&password=${password}`;
         const url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Usuario/ComprobarUsuario.php?${datos}`;
 
@@ -27,14 +28,16 @@ export class Usuario {
         // Manejar la respuesta de la solicitud
         xhttp.onreadystatechange = function() {
             if (this.readyState === 4 && this.status === 200) {
-                console.log(this.responseText);
+
                 let respuesta = this.responseText.split(",");
+
                 // Si la respuesta es "true", redirigir al usuario a la página de bienvenida
                 if (respuesta[1] === "true") {
-                    console.log("Hola");
+
                     // Crear una instancia de la clase Token y generar el token
                     const token = new Token();
                     token.generar_Token(respuesta[0]);
+
                     window.location.href = "HTML/Views/Welcome/welcome.html";
                     alert("Iniciando sesión");
                 } else {

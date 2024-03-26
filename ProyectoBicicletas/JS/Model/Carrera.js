@@ -8,8 +8,8 @@ export class Carrera {
         let url = "http://localhost/ProyectoBicicletas/PHP/ApiRest/Carrera/Get_All_Carrera.php";
         let container = document.querySelector('#datos-container');
         let xhttp = Conexion.crearXMLHttpRequest("GET", url);
-       
-        xhttp.onreadystatechange = function() {
+
+        xhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
                 console.log(this.responseText);
                 let carreras = JSON.parse(this.responseText);
@@ -25,8 +25,8 @@ export class Carrera {
         return new Promise((resolve, reject) => {
             let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Carrera/Get_Carrera_By_Id.php?id=${id}`;
             let xhttp = Conexion.crearXMLHttpRequest("GET", url);
-    
-            xhttp.onreadystatechange = function() {
+
+            xhttp.onreadystatechange = function () {
                 if (this.readyState === 4) {
                     if (this.status === 200) {
                         console.log(this.responseText);
@@ -40,13 +40,13 @@ export class Carrera {
             xhttp.send();
         });
     }
-   
+
     // Método para eliminar una carrera
     delete_Carrera(id) {
         let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Carrera/Delete_Carrera.php?id=${id}`;
         let xhttp = Conexion.crearXMLHttpRequest("DELETE", url);
 
-        xhttp.onreadystatechange = function() {
+        xhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
                 console.log(this.responseText);
                 if (this.responseText === "true") {
@@ -74,19 +74,26 @@ export class Carrera {
         if (!validaciones.validarCamposCarreras($nombre, $fecha_inicio, $ubicacion)) {
             return;
         }
+   
 
         let datos = `&nombre=${$nombre}&fecha_inicio=${$fecha_inicio}&ubicacion=${$ubicacion}&id_categoria_carrera=${$id_categoria_carrera}&id_evento=${$id_eventos}`;
         let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Carrera/Create_Carrera.php?${datos}`;
         let xhttp = Conexion.crearXMLHttpRequest("POST", url);
 
-        xhttp.onreadystatechange = function() {
+        xhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
                 console.log(this.responseText);
-                if (this.responseText === "true") {
+                var response = JSON.parse(this.responseText);
+                if (response.success) {
                     window.location.href = "../../Views/Carrera/Index.html";
                     alert("Carrera creada correctamente.");
                 } else {
-                    alert("Error al crear la carrera.");
+                    // Mostrar errores
+                    var errorMessage = "Error al crear la carrera:\n";
+                    for (var i = 0; i < response.errors.length; i++) {
+                        errorMessage += response.errors[i] + "\n";
+                    }
+                    alert(errorMessage);
                 }
             }
         };
@@ -112,14 +119,20 @@ export class Carrera {
         let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Carrera/Update_Carrera.php?${datos}`;
         let xhttp = Conexion.crearXMLHttpRequest("PUT", url);
 
-        xhttp.onreadystatechange = function() {
+        xhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
                 console.log(this.responseText);
-                if (this.responseText === "true") {
+                var response = JSON.parse(this.responseText);
+                if (response.success) {
                     window.location.href = "../../Views/Carrera/Index.html";
                     alert("Carrera actualizada correctamente.");
                 } else {
-                    alert("Error al actualizar la carrera.");
+                   // Mostrar errores
+                   var errorMessage = "Error al actualizar la carrera:\n";
+                   for (var i = 0; i < response.errors.length; i++) {
+                       errorMessage += response.errors[i] + "\n";
+                   }
+                   alert(errorMessage);
                 }
             }
         };

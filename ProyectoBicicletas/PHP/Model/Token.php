@@ -5,11 +5,12 @@ require_once('../../ConnectionDB/ConnectionDB.php');
 class Token {
 
     // Obtiene todos los tokens.
-    public static function getAllTokens() {
+    public static function get_All_Token_By_Id($id) {
         $database = new ConnectionDB();
         $conexion = $database->getConnect();
 
-        $sentencia = $conexion->prepare('SELECT * FROM token');
+        $sentencia = $conexion->prepare('SELECT * FROM token where id_usuario = :id ORDER BY fecha_creacion ASC');
+        $sentencia->bindParam(':id', $id);
 
         if ($sentencia->execute()) {
             $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
@@ -20,7 +21,7 @@ class Token {
     }
 
     // Genera un nuevo token.
-    public static function generarToken($id) {
+    public static function generar_Token($id) {
         $database = new ConnectionDB();
         $conexion = $database->getConnect();
 
@@ -38,7 +39,7 @@ class Token {
         $sentencia->bindParam(':fecha_expiracion', $fecha_expiracion);
 
         if ($sentencia->execute()) {
-            echo "true";
+            echo $token;
         } else {
             echo "false";
         }

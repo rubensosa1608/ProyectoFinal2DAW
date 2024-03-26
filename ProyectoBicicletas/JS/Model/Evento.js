@@ -85,11 +85,17 @@ export class Evento {
         xhttp.onreadystatechange = function() {
             if (this.readyState === 4 && this.status === 200) {
                 console.log(this.responseText);
-                if (this.responseText === "true") {
+                var response = JSON.parse(this.responseText);
+                if (response.success) {
                     window.location.href = "../../Views/Evento/Index.html";
                     alert("Evento creado correctamente.");
                 } else {
-                    alert("Error al crear el evento.");
+                    // Mostrar errores
+                    var errorMessage = "Error al crear el Evento:\n";
+                    for (var i = 0; i < response.errors.length; i++) {
+                        errorMessage += response.errors[i] + "\n";
+                    }
+                    alert(errorMessage);
                 }
             }
         };
@@ -120,12 +126,17 @@ export class Evento {
         xhttp.onreadystatechange = function() {
             if (this.readyState === 4 && this.status === 200) {
                 console.log(this.responseText);
-
-                if (this.responseText === "true") {
+                var response = JSON.parse(this.responseText);
+                if (response.success) {
                     window.location.href = "../../Views/Evento/Index.html";
                     alert("Evento actualizado correctamente.");
                 } else {
-                    alert("Error al actualizar el evento.");
+                     // Mostrar errores
+                     var errorMessage = "Error al crear el Evento:\n";
+                     for (var i = 0; i < response.errors.length; i++) {
+                         errorMessage += response.errors[i] + "\n";
+                     }
+                     alert(errorMessage);
                 }
             }
         };

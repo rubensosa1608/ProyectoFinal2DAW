@@ -2,6 +2,7 @@
 
 require_once '../../ConnectionDB/ConnectionDB.php';
 
+
 class Carrera {
 
     // Función que obtiene todas las carreras.
@@ -52,7 +53,7 @@ class Carrera {
         $sentencia->bindParam(':id_evento', $id_evento);
 
         if ($sentencia->execute()) {
-            echo "true";
+         
         } else {
             echo "false";
         }
@@ -87,7 +88,7 @@ class Carrera {
         $sentencia->bindParam(':id', $id);
 
         if ($sentencia->execute()) {
-            echo "true";
+           
         } else {
             echo "false";
         }

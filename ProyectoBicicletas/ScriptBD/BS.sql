@@ -23,7 +23,7 @@ CREATE TABLE IF NOT EXISTS `Token` (
 
 CREATE TABLE IF NOT EXISTS `Evento` (
     `Id` int NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    `Nombre_evento` varchar(255) NOT NULL,
+    `Nombre` varchar(255) NOT NULL,
     `Descripcion` varchar(255) NOT NULL,
     `Fecha_inicio` date NOT NULL
 );
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `Carrera` (
     `Fecha_inicio` date NOT NULL,
     `Ubicacion` varchar(255) NOT NULL,
     FOREIGN KEY (`Id_Categoria_Carrera`) REFERENCES `Categoria_Carrera`(`Id`),
-    FOREIGN KEY (`Id_Evento`) REFERENCES `Evento`(`Id`)
+    FOREIGN KEY (`Id_Evento`) REFERENCES `Evento`(`Id`) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS `Categoria_Bicicleta` (

@@ -46,7 +46,7 @@ class Evento {
         $sentencia->bindParam(':fecha_inicio', $fecha_inicio);
 
         if ($sentencia->execute()) {
-            echo "true";
+           
         } else {
             echo "false";
         }
@@ -79,7 +79,7 @@ class Evento {
         $sentencia->bindParam(':id', $id);
 
         if ($sentencia->execute()) {
-            echo "true";
+         
         } else {
             echo "false";
         }
