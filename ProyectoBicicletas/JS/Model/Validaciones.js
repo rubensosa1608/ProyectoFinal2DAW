@@ -19,8 +19,8 @@ export class Validaciones {
         }
 
         // Validar longitud de la contraseña
-        if (password.length < 6 || password.length > 20) {
-            errores.push('La contraseña debe tener entre 6 y 20 caracteres.');
+        if (password.length < 5 || password.length > 20) {
+            errores.push('La contraseña debe tener entre 5 y 20 caracteres.');
         }
 
         // Validar formato del nombre de usuario

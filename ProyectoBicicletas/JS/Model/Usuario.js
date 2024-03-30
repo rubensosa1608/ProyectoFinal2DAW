@@ -9,7 +9,6 @@ export class Usuario {
         const username = document.querySelector('#username').value;
         const password = document.querySelector('#password').value;
 
-         
         // Crear una instancia de la clase Validaciones
         const validaciones = new Validaciones();
 
@@ -18,7 +17,7 @@ export class Usuario {
             return;
         }
 
-           // Construir los datos para enviar al servidor
+        // Construir los datos para enviar al servidor
         const datos = `&nombre=${username}&password=${password}`;
         const url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Usuario/ComprobarUsuario.php?${datos}`;
 
@@ -26,7 +25,7 @@ export class Usuario {
         const xhttp = Conexion.crearXMLHttpRequest("GET", url);
 
         // Manejar la respuesta de la solicitud
-        xhttp.onreadystatechange = function() {
+        xhttp.onreadystatechange = function () {
             if (this.readyState === 4 && this.status === 200) {
 
                 let respuesta = this.responseText.split(",");
@@ -41,20 +40,22 @@ export class Usuario {
 
                             const dataUser = {
                                 userID: respuesta[0],
-                                token: token
+                                userToken: token
                             };
-                            
+
                             // Convierte el objeto en una cadena JSON
                             const jsonData = JSON.stringify(dataUser);
-                            
+
                             // Almacena la cadena JSON en sessionStorage
                             sessionStorage.setItem('userData', jsonData);
-                            window.location.href = "HTML/Views/Welcome/welcome.html";
-                            alert("Iniciando sesión");
+
                         })
                         .catch(error => {
                             console.error('Error al generar el token:', error.message);
                         });
+
+                        window.location.href = "HTML/Views/Welcome/welcome.html";
+                        alert("Iniciando sesión");
 
                 } else {
                     alert("Error al iniciar sesión");

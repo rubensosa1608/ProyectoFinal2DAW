@@ -9,7 +9,7 @@ class Token {
         $database = new ConnectionDB();
         $conexion = $database->getConnect();
 
-        $sentencia = $conexion->prepare('SELECT * FROM token where id_usuario = :id ORDER BY fecha_creacion ASC');
+        $sentencia = $conexion->prepare('SELECT * FROM token where id_usuario = :id ORDER BY fecha_creacion DESC');
         $sentencia->bindParam(':id', $id);
 
         if ($sentencia->execute()) {

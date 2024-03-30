@@ -1,27 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
   <!-- Bootstrap CSS -->
-  <link href="HTML/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="HTML/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
   <!-- Custom CSS -->
-  <link href="HTML/CSS/style.css" rel="stylesheet"/>
+  <link href="HTML/CSS/style.css" rel="stylesheet" />
 
   <script type="module">
+    import { Token } from "./JS/Model/Token.js";
     import { Usuario } from "./JS/Model/Usuario.js";
-    
+
+    const token = new Token();
+
+    window.addEventListener('load', comprobar_Token);
+
+    function comprobar_Token() {
+      const userData = sessionStorage.getItem('userData');
+
+      if (userData) {
+        const data = JSON.parse(userData);
+        const userId = data.userID;
+        const userToken = data.userToken.replace(/^"(.*)"$/, '$1');
+        let ruta = "/ProyectoBicicletas/HTML/Views/Welcome/welcome.html";
+        token.comprobar_Token(userId, userToken, ruta);
+      }
+    }
+
     const usuario = new Usuario();
-    
-    window.ComprobarUsuario = function() {
+
+    window.ComprobarUsuario = function () {
       usuario.ComprobarUsuario();
-      };
-</script>
+    };
+  </script>
 
 </head>
+
 <body>
-  
+
   <div class="container mt-5">
     <div class="row">
       <div class="col-md-6 offset-md-3">
@@ -46,4 +65,5 @@
   </div>
 
 </body>
+
 </html>
