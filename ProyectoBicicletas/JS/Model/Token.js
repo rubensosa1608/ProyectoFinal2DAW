@@ -44,9 +44,9 @@ export class Token {
                         if (Nuevafecha >= fechaCreacion  && Nuevafecha <= fechaExpiracion) {
 
                             if(!$ruta == null){
-                            window.location.href = $ruta;
+                            
                             }else{
-
+                                window.location.href = $ruta;
                             }
                         }else{
                             alert("Su sesion ha expirado");

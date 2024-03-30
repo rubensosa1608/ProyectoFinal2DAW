@@ -66,4 +66,10 @@ export class Usuario {
         // Enviar la solicitud
         xhttp.send();
     }
+
+    logout(){
+        sessionStorage.removeItem('userData');
+        window.location.href = "/ProyectoBicicletas/index.html";
+        alert("Has cerrado la sesión");
+    }
 }
