@@ -21,7 +21,7 @@ export class Token {
         });
     }
 
-    comprobar_Token($id, $token, $ruta = null) {
+    comprobar_Token($id, $token, $rutaIr = null, $rutaVolver = null){
 
         let datos = "&id_usuario=" + $id;
         let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Token/Get_All_Token_By_Id.php?${datos}`;
@@ -29,28 +29,32 @@ export class Token {
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 let tokens = JSON.parse(this.responseText);
-            
-                //Obtengo la fecha de hoy
-                let Nuevafecha = new Date();
 
                 //Recoro todos los tokens que me devuelve la query
                 tokens.forEach(token => {
-                    let fechaCreacion = new Date(token.Fecha_creacion);
-                    let fechaExpiracion = new Date(token.Fecha_expiracion);
 
                     //Si el token es el mismo
-                    if (token.Token == $token) {              
+                    if (token.Token == $token) {  
+                        //Obtengo la fecha de hoy y las fechas de creacion y expiracion
+                        let Nuevafecha = new Date();
+                        let fechaCreacion = new Date(token.Fecha_creacion);
+                        let fechaExpiracion = new Date(token.Fecha_expiracion);  
+
                         //Compruebo si fecha de hoy esta entre la fecha de creacion y la fecha de expiracion
                         if (Nuevafecha >= fechaCreacion  && Nuevafecha <= fechaExpiracion) {
 
-                            if(!$ruta == null){
+                            if($rutaIr == null){
                             
                             }else{
-                                window.location.href = $ruta;
+                                window.location.href = $rutaIr;
                             }
                         }else{
                             alert("Su sesion ha expirado");
-                            window.location.href = "/ProyectoBicicletas/index.html";
+                            if($rutaVolver == null){
+                            
+                            }else{
+                                window.location.href = "/ProyectoBicicletas/index.html";
+                            }
                         }
                     }
                 });

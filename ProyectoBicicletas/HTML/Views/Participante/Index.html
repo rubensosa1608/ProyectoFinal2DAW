@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Principal de Participantes</title>
-    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="../../CSS/style.css" rel="stylesheet"/>
+    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="../../CSS/style.css" rel="stylesheet" />
     <link rel="icon" type="image/png" href="../../CSS/CaBici.png" sizes="32x32">
 </head>
+
 <body>
     <div id="navbar-container"></div>
 
@@ -25,15 +27,42 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function() {
+        $(document).ready(function () {
             $("#navbar-container").load("../../Views/navbar.html");
         });
     </script>
 
     <script type="module">
         import { Participante } from "../../../JS/Model/Participante.js";
+        import { Token } from "../../../JS/Model/Token.js";
+        const token = new Token();
+
+        let userDataToken = sessionStorage.getItem('userData');
+
+        if(userDataToken == undefined){
+            alert("Debes iniciar sesión");  
+            window.location.href = "/ProyectoBicicletas/index.html";
+}
+
+        window.addEventListener('load', comprobar_Token);
+
+        function comprobar_Token() {
+            const userData = sessionStorage.getItem('userData');
+
+            if (userData) {
+                const data = JSON.parse(userData);
+                const userId = data.userID;
+                const userToken = data.userToken.replace(/^"(.*)"$/, '$1');
+                let rutaVolver = "/ProyectoBicicletas/index.html";
+                token.comprobar_Token(userId, userToken, null, rutaVolver);
+            }
+        }
+
         const participante = new Participante();
         participante.get_All_Participante();
+
+
     </script>
 </body>
+
 </html>

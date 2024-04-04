@@ -47,6 +47,29 @@
         import { Carrera } from "../../../JS/Model/Carrera.js";
         import { Evento } from "../../../JS/Model/Evento.js";
         import { Categoria_Carrera } from "../../../JS/Model/Categoria_Carrera.js";
+        import { Token } from "../../../JS/Model/Token.js";
+        const token = new Token();
+
+        let userDataToken = sessionStorage.getItem('userData');
+
+        if(userDataToken == undefined){
+            alert("Debes iniciar sesión");  
+            window.location.href = "/ProyectoBicicletas/index.html";
+        }
+
+window.addEventListener('load', comprobar_Token);
+
+function comprobar_Token() {
+    const userData = sessionStorage.getItem('userData');
+
+    if (userData) {
+        const data = JSON.parse(userData);
+        const userId = data.userID;
+        const userToken = data.userToken.replace(/^"(.*)"$/, '$1');
+        let rutaVolver = "/ProyectoBicicletas/index.html";
+        token.comprobar_Token(userId, userToken, null, rutaVolver);
+    }
+}
 
         const carrera = new Carrera();
         const evento = new Evento();

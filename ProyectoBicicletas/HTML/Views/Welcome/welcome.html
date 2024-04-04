@@ -23,6 +23,28 @@
     $(document).ready(function() {
         $("#navbar-container").load("../navbar.html");
     });
+    
+    import { Token } from "../../../JS/Model/Token.js";
+  const token = new Token();
+
+    let userDataToken = sessionStorage.getItem('userData');
+
+if(userDataToken == undefined){
+    alert("Debes iniciar sesión");  
+    window.location.href = "/ProyectoBicicletas/index.html";
+}
+
+function comprobar_Token() {
+    const userData = sessionStorage.getItem('userData');
+
+    if (userData) {
+        const data = JSON.parse(userData);
+        const userId = data.userID;
+        const userToken = data.userToken.replace(/^"(.*)"$/, '$1');
+        let rutaVolver = "/ProyectoBicicletas/index.html";
+        token.comprobar_Token(userId, userToken, null, rutaVolver);
+    }
+}
 </script>
 </body>
 </html>
