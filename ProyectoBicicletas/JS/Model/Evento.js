@@ -1,5 +1,6 @@
 import { Validaciones } from "./Validaciones.js";
 import { Conexion } from "../Conexion/Conexion.js";
+import { Carrera } from "../Model/Carrera.js";
 
 export class Evento {
     // Método para obtener todos los eventos
@@ -44,24 +45,64 @@ export class Evento {
         });
     }
 
+
     // Método para eliminar un evento
     delete_Evento($id) {
-        let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Evento/Delete_Evento.php?id=${$id}`;
-        let xhttp = Conexion.crearXMLHttpRequest("DELETE", url);
 
-        xhttp.onreadystatechange = function() {
-            if (this.readyState === 4 && this.status === 200) {
-                console.log(this.responseText);
-                if (this.responseText === "true") {
-                    alert("Evento eliminado correctamente.");
-                    window.location.reload();
-                } else {
-                    alert("Error al eliminar el evento.");
-                }
+        let carrera = new Carrera();
+
+        carrera.get_All_Carrera_By_Evento($id)
+        .then(carrera =>{
+
+            if(carrera == 0){
+
+                let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Evento/Delete_Evento.php?id=${$id}`;
+                let xhttp = Conexion.crearXMLHttpRequest("DELETE", url);
+        
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState === 4 && this.status === 200) {
+                        console.log(this.responseText);
+                        if (this.responseText === "true") {
+                            alert("Evento eliminado correctamente.");
+                            window.location.reload();
+                        } else {
+                            alert("Error al eliminar el evento.");
+                        }
+                    }
+                };
+        
+                xhttp.send();
+            }else{
+                
+            let respuesta = confirm(`Estas seguro que quieres borrar este evento? Tienes ${carrera}`);
+
+            if(respuesta){
+                let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Evento/Delete_Evento.php?id=${$id}`;
+                let xhttp = Conexion.crearXMLHttpRequest("DELETE", url);
+        
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState === 4 && this.status === 200) {
+                        console.log(this.responseText);
+                        if (this.responseText === "true") {
+                            alert("Evento eliminado correctamente.");
+                            window.location.reload();
+                        } else {
+                            alert("Error al eliminar el evento.");
+                        }
+                    }
+                };
+        
+                xhttp.send();
+            }else{
+    
             }
-        };
+            }
+        
+        })
+        .catch(error => {
+            console.error('Error:', error.message);
+        });
 
-        xhttp.send();
     }
 
     // Método para crear un evento

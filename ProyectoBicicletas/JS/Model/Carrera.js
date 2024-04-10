@@ -138,4 +138,27 @@ export class Carrera {
         };
         xhttp.send();
     }
+
+    get_All_Carrera_By_Evento($id){
+        return new Promise((resolve, reject) => {
+            let url = `http://localhost/ProyectoFinal2DAW/ProyectoBicicletas/PHP/ApiRest/Carrera/Get_All_Carrera_By_Evento.php?id_evento=${$id}`;
+            let xhttp = Conexion.crearXMLHttpRequest("GET", url);
+
+            xhttp.onreadystatechange = function () {
+                if (this.readyState === 4) {
+                    if (this.status === 200) {
+                        console.log(this.responseText);
+                        let carrera = JSON.parse(this.responseText);
+                        let numeroCarreras = Object.keys(carrera).length;
+
+                        resolve(numeroCarreras);
+                        
+                    } else {
+                        reject(new Error('Error al obtener carreras'));
+                    }
+                }
+            };
+            xhttp.send();
+        });
+    }
 }

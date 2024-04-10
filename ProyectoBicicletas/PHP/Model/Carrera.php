@@ -93,6 +93,23 @@ class Carrera {
             echo "false";
         }
     }
+
+    public static function get_All_Carrera_By_Evento($id_evento){
+        $database = new ConnectionDB();
+        $conexion = $database->getConnect();
+
+        $sentencia = $conexion->prepare('SELECT * FROM carrera where id_evento=:id_evento');
+        $sentencia->bindParam(':id_evento', $id_evento);
+
+        if($sentencia->execute()){
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            echo json_encode($resultado);
+        }else{
+            echo "false";
+        }
+    }
 }
+
+
 
 ?>
