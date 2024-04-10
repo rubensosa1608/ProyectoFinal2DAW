@@ -141,7 +141,7 @@ export class Carrera {
 
     get_All_Carrera_By_Evento($id){
         return new Promise((resolve, reject) => {
-            let url = `http://localhost/ProyectoFinal2DAW/ProyectoBicicletas/PHP/ApiRest/Carrera/Get_All_Carrera_By_Evento.php?id_evento=${$id}`;
+            let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Carrera/Get_All_Carrera_By_Evento.php?id_evento=${$id}`;
             let xhttp = Conexion.crearXMLHttpRequest("GET", url);
 
             xhttp.onreadystatechange = function () {
