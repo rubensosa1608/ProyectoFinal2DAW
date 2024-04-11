@@ -11,7 +11,7 @@ export function tablaCarrera(carreras) {
         tabla += "<td>" + carrera['Fecha_inicio'] + "</td>"; 
         tabla += "<td>" + carrera['Ubicacion'] + "</td>"; 
         tabla += "<td>" + carrera['nombre_categoria'] + "</td>"; 
-        tabla += "<td>" + carrera['nombre_evento'] + "</td>"; 
+        tabla += "<td> <a id='linkEvento' href='../../../HTML/Formularios/Formulario_Evento/FormularioView.html?id=" + carrera['Id_Evento'] + "' >" + carrera['nombre_evento'] + "</a></td>"; 
         tabla += "<td><button class='btn btn-danger' onclick='delete_Carrera(" + carrera['Id'] + ")'>Eliminar</button></td>"; 
         tabla += "<td><a class='btn btn-primary' href='../../../HTML/Formularios/Formulario_Carrera/FormularioActualizar.html?id=" + carrera['Id'] + "'>Actualizar</a></td>"; 
         tabla += "</tr>";

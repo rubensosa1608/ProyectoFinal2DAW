@@ -74,7 +74,7 @@ export class Evento {
                 xhttp.send();
             }else{
                 
-            let respuesta = confirm(`Estas seguro que quieres borrar este evento? Tienes ${carrera}`);
+            let respuesta = confirm(`Estas seguro que quieres borrar este evento? Tienes ${carrera} carreras asociadas a este evento.`);
 
             if(respuesta){
                 let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Evento/Delete_Evento.php?id=${$id}`;

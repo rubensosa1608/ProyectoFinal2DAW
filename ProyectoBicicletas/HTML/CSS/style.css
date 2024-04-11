@@ -105,3 +105,23 @@ select option {
   margin-left: 100px;
   margin-right: 100px;
 }
+
+#linkEvento:link {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Cambiar el color del enlace visitado */
+#linkEvento:visited {
+  color: #ffffff;
+}
+
+/* Cambiar el color del enlace al pasar el ratón por encima */
+#linkEvento:hover {
+  color: aqua;
+}
+
+/* Cambiar el color del enlace cuando está activo (cuando se hace clic) */
+#linkEvento:active {
+  color: #ffffff;
+}

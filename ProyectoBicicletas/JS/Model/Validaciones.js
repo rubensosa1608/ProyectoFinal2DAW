@@ -67,8 +67,8 @@ export class Validaciones {
         }
 
         // Validar longitud de la descripción del evento
-        if (descripcion.length < 5 || descripcion.length > 100) {
-            errores.push('La descripción del evento debe tener entre 10 y 100 caracteres.');
+        if (descripcion.length < 5 || descripcion.length > 300) {
+            errores.push('La descripción del evento debe tener entre 10 y 300 caracteres.');
         }
 
         // Mostrar mensajes de error si los hay y devolver false
