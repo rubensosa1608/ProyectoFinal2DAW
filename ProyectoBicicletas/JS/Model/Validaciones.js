@@ -1,5 +1,11 @@
 export class Validaciones {
-    // Método para validar campos de inicio de sesión
+
+     /**
+     * Método para validar campos de inicio de sesión.
+     * @param {string} username - El nombre de usuario introducido.
+     * @param {string} password - La contraseña introducida.
+     * @returns {boolean} Devuelve true si los campos son válidos, de lo contrario devuelve false.
+     */
     validarCamposLogin(username, password) {
         // Expresiones regulares para validar nombre de usuario y contraseña
         const usernameRegex = /^[a-zA-Z0-9_]+$/;
@@ -43,7 +49,13 @@ export class Validaciones {
         return true;
     }
 
-    // Método para validar campos de eventos
+    /**
+     * Método para validar campos de eventos.
+     * @param {string} nombre - El nombre del evento introducido.
+     * @param {string} descripcion - La descripción del evento introducida.
+     * @param {string} fecha_inicio - La fecha de inicio del evento introducida.
+     * @returns {boolean} Devuelve true si los campos son válidos, de lo contrario devuelve false.
+     */
     validarCamposEventos(nombre, descripcion, fecha_inicio) {
         // Expresión regular para validar nombre del evento
         const nombreRegex = /^[a-zA-Z0-9_\s]+$/;
@@ -81,7 +93,13 @@ export class Validaciones {
         return true;
     }
 
-    // Método para validar campos de carreras
+      /**
+     * Método para validar campos de carreras.
+     * @param {string} nombre - El nombre de la carrera introducido.
+     * @param {string} fecha_inicio - La fecha de inicio de la carrera introducida.
+     * @param {string} ubicacion - La ubicación de la carrera introducida.
+     * @returns {boolean} Devuelve true si los campos son válidos, de lo contrario devuelve false.
+     */
     validarCamposCarreras(nombre, fecha_inicio, ubicacion) {
         // Expresión regular para validar nombre de la carrera
         const nombreRegex = /^[a-zA-Z0-9_\s]+$/;

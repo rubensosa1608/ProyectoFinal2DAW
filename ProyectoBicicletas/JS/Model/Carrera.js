@@ -2,8 +2,15 @@ import { Validaciones } from "./Validaciones.js";
 import { Conexion } from "../Conexion/Conexion.js";
 import { tablaCarrera } from "../Tablas/TablaCarrera.js";
 
+/**
+ * Clase que representa una carrera de bicicletas.
+ */
 export class Carrera {
-    // Método para obtener todas las carreras
+
+     /**
+     * Método para obtener todas las carreras.
+     * @returns {void}
+     */
     get_All_Carrera() {
         let url = "http://localhost/ProyectoBicicletas/PHP/ApiRest/Carrera/Get_All_Carrera.php";
         let container = document.querySelector('#datos-container');
@@ -20,7 +27,11 @@ export class Carrera {
         xhttp.send();
     }
 
-    // Método para obtener una carrera por su ID
+    /**
+     * Método para obtener una carrera por su ID.
+     * @param {number} id - El ID de la carrera.
+     * @returns {Promise} Una promesa que resuelve con la información de la carrera.
+     */
     get_Carrera_By_Id(id) {
         return new Promise((resolve, reject) => {
             let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Carrera/Get_Carrera_By_Id.php?id=${id}`;
@@ -41,7 +52,11 @@ export class Carrera {
         });
     }
 
-    // Método para eliminar una carrera
+    /**
+    * Método para eliminar una carrera.
+    * @param {number} id - El ID de la carrera a eliminar.
+    * @returns {void}
+    */
     delete_Carrera(id) {
         let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Carrera/Delete_Carrera.php?id=${id}`;
         let xhttp = Conexion.crearXMLHttpRequest("DELETE", url);
@@ -61,7 +76,10 @@ export class Carrera {
         xhttp.send();
     }
 
-    // Método para crear una nueva carrera
+    /**
+     * Método para crear una nueva carrera.
+     * @returns {void}
+     */
     create_Carrera() {
         let $nombre = document.querySelector('#nombre').value;
         let $fecha_inicio = document.querySelector('#fecha_inicio').value;
@@ -101,7 +119,11 @@ export class Carrera {
         xhttp.send();
     }
 
-    // Método para actualizar una carrera
+      /**
+     * Método para actualizar una carrera.
+     * @param {number} $id - El ID de la carrera a actualizar.
+     * @returns {void}
+     */
     update_Carrera($id) {
         let $nombre = document.querySelector('#nombre').value;
         let $ubicacion = document.querySelector('#ubicacion').value;
@@ -139,6 +161,11 @@ export class Carrera {
         xhttp.send();
     }
 
+     /**
+     * Método para obtener todas las carreras por evento.
+     * @param {number} $id - El ID del evento.
+     * @returns {Promise} Una promesa que resuelve con el número de carreras.
+     */
     get_All_Carrera_By_Evento($id){
         return new Promise((resolve, reject) => {
             let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Carrera/Get_All_Carrera_By_Evento.php?id_evento=${$id}`;
