@@ -2,16 +2,8 @@ import { Validaciones } from "./Validaciones.js";
 import { Conexion } from "../Conexion/Conexion.js";
 import { Carrera } from "../Model/Carrera.js";
 
-/**
- * Clase que representa un evento relacionado con carreras de bicicletas.
- */
-
 export class Evento {
-
-    /**
-    * Método para obtener todos los eventos.
-    * @returns {Promise} Una promesa que resuelve con la lista de eventos.
-    */
+    // Método para obtener todos los eventos
     get_All_Evento() {
         return new Promise((resolve, reject) => {
             let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Evento/Get_All_Evento.php`;
@@ -32,11 +24,7 @@ export class Evento {
         });
     }
 
-    /**
-     * Método para obtener un evento por su ID.
-     * @param {number} id - El ID del evento a obtener.
-     * @returns {Promise} Una promesa que resuelve con la información del evento.
-     */
+    // Método para obtener un evento por su ID
     get_Evento_By_Id(id) {
         return new Promise((resolve, reject) => {
             let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Evento/Get_Evento_By_Id.php?id=${id}`;
@@ -58,11 +46,7 @@ export class Evento {
     }
 
 
-     /**
-     * Método para eliminar un evento.
-     * @param {number} $id - El ID del evento a eliminar.
-     * @returns {void}
-     */
+    // Método para eliminar un evento
     delete_Evento($id) {
 
         let carrera = new Carrera();
@@ -121,10 +105,7 @@ export class Evento {
 
     }
 
-    /**
-     * Método para crear un nuevo evento.
-     * @returns {void}
-     */
+    // Método para crear un evento
     create_Evento() {
         var $nombre = document.querySelector('#nombre').value;
         var $descripcion = document.querySelector('#descripcion').value;
@@ -163,11 +144,7 @@ export class Evento {
         xhttp.send();
     }
 
-     /**
-     * Método para actualizar un evento existente.
-     * @param {number} $id - El ID del evento a actualizar.
-     * @returns {void}
-     */
+    // Método para actualizar un evento
     update_Evento($id) {
         var $nombre = document.querySelector('#nombre').value;
         var $descripcion = document.querySelector('#descripcion').value;

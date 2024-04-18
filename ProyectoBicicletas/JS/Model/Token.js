@@ -1,16 +1,8 @@
 
 import { Conexion } from "../Conexion/Conexion.js";
 
-/**
- * Clase que proporciona métodos para la generación y comprobación de tokens de usuario.
- */
 export class Token {
 
-    /**
-     * Método para generar un token para el usuario con el ID especificado.
-     * @param {number} id - El ID del usuario para el cual se generará el token.
-     * @returns {Promise} Una promesa que resuelve con el token generado.
-     */
     generar_Token(id) {
         return new Promise((resolve, reject) => {
             let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Token/Generar_Token.php?id_usuario=${id}`;
@@ -29,14 +21,6 @@ export class Token {
         });
     }
 
-    /**
-     * Método para comprobar la validez de un token para un usuario.
-     * @param {number} $id - El ID del usuario.
-     * @param {string} $token - El token a comprobar.
-     * @param {string} $rutaIr - La ruta a la que se redirigirá si el token es válido.
-     * @param {string} $rutaVolver - La ruta a la que se redirigirá si el token ha expirado.
-     * @returns {void}
-     */
     comprobar_Token($id, $token, $rutaIr = null, $rutaVolver = null){
 
         let datos = "&id_usuario=" + $id;
