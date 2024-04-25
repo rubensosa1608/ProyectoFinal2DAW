@@ -2,8 +2,14 @@ import { Validaciones } from "./Validaciones.js";
 import { Conexion } from "../Conexion/Conexion.js";
 import { tablaCarrera } from "../Tablas/TablaCarrera.js";
 
+/**
+ * Clase que representa una carrera y proporciona métodos para interactuar con ella.
+ */
 export class Carrera {
-    // Método para obtener todas las carreras
+
+    /**
+     * Método para obtener todas las carreras.
+     */
     get_All_Carrera() {
         let url = "http://localhost/ProyectoBicicletas/PHP/ApiRest/Carrera/Get_All_Carrera.php";
         let container = document.querySelector('#datos-container');
@@ -20,7 +26,12 @@ export class Carrera {
         xhttp.send();
     }
 
-    // Método para obtener una carrera por su ID
+    /**
+     * Método para obtener una carrera por su ID.
+     * 
+     * @param {number} id - El ID de la carrera a obtener.
+     * @returns {Promise} - Una promesa que se resuelve con la carrera obtenida o se rechaza con un error.
+     */
     get_Carrera_By_Id(id) {
         return new Promise((resolve, reject) => {
             let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Carrera/Get_Carrera_By_Id.php?id=${id}`;
@@ -41,7 +52,11 @@ export class Carrera {
         });
     }
 
-    // Método para eliminar una carrera
+    /**
+     * Método para eliminar una carrera.
+     * 
+     * @param {number} id - El ID de la carrera a eliminar.
+     */
     delete_Carrera(id) {
         let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Carrera/Delete_Carrera.php?id=${id}`;
         let xhttp = Conexion.crearXMLHttpRequest("DELETE", url);
@@ -61,8 +76,11 @@ export class Carrera {
         xhttp.send();
     }
 
-    // Método para crear una nueva carrera
+    /**
+     * Método para crear una nueva carrera.
+     */
     create_Carrera() {
+        // Obtener datos del formulario
         let $nombre = document.querySelector('#nombre').value;
         let $fecha_inicio = document.querySelector('#fecha_inicio').value;
         let $ubicacion = document.querySelector('#ubicacion').value;
@@ -71,11 +89,12 @@ export class Carrera {
 
         let validaciones = new Validaciones();
 
+        // Validar campos del formulario
         if (!validaciones.validarCamposCarreras($nombre, $fecha_inicio, $ubicacion)) {
             return;
         }
-   
-
+        
+        // Construir datos para la solicitud
         let datos = `&nombre=${$nombre}&fecha_inicio=${$fecha_inicio}&ubicacion=${$ubicacion}&id_categoria_carrera=${$id_categoria_carrera}&id_evento=${$id_eventos}`;
         let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Carrera/Create_Carrera.php?${datos}`;
         let xhttp = Conexion.crearXMLHttpRequest("POST", url);
@@ -101,8 +120,13 @@ export class Carrera {
         xhttp.send();
     }
 
-    // Método para actualizar una carrera
+    /**
+     * Método para actualizar una carrera.
+     * 
+     * @param {number} $id - El ID de la carrera a actualizar.
+     */
     update_Carrera($id) {
+        // Obtener datos del formulario
         let $nombre = document.querySelector('#nombre').value;
         let $ubicacion = document.querySelector('#ubicacion').value;
         let $fecha_inicio = document.querySelector('#fecha_inicio').value;
@@ -111,10 +135,12 @@ export class Carrera {
 
         let validaciones = new Validaciones();
 
+        // Validar campos del formulario
         if (!validaciones.validarCamposCarreras($nombre, $fecha_inicio, $ubicacion)) {
             return;
         }
 
+        // Construir datos para la solicitud
         let datos = `&nombre=${$nombre}&fecha_inicio=${$fecha_inicio}&ubicacion=${$ubicacion}&id_categoria_carrera=${$id_categoria_carrera}&id_evento=${$id_eventos}&id=${$id}`;
         let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Carrera/Update_Carrera.php?${datos}`;
         let xhttp = Conexion.crearXMLHttpRequest("PUT", url);
@@ -139,6 +165,12 @@ export class Carrera {
         xhttp.send();
     }
 
+    /**
+     * Método para obtener todas las carreras de un evento.
+     * 
+     * @param {number} $id - El ID del evento del que se desean obtener las carreras.
+     * @returns {Promise} - Una promesa que se resuelve con el número de carreras obtenidas o se rechaza con un error.
+     */
     get_All_Carrera_By_Evento($id){
         return new Promise((resolve, reject) => {
             let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Carrera/Get_All_Carrera_By_Evento.php?id_evento=${$id}`;

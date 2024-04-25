@@ -2,8 +2,13 @@ import { Validaciones } from "./Validaciones.js";
 import { Conexion } from "../Conexion/Conexion.js";
 import { Token } from "./Token.js";
 
+/**
+ * Clase que proporciona métodos para gestionar usuarios.
+ */
 export class Usuario {
-    // Método para comprobar el usuario al iniciar sesión
+    /**
+     * Método para comprobar el usuario al iniciar sesión.
+     */
     ComprobarUsuario() {
         // Obtener los valores de usuario y contraseña del formulario
         const username = document.querySelector('#username').value;
@@ -67,6 +72,9 @@ export class Usuario {
         xhttp.send();
     }
 
+    /**
+     * Método para cerrar sesión del usuario.
+     */
     logout(){
         sessionStorage.removeItem('userData');
         window.location.href = "/ProyectoBicicletas/index.html";

@@ -2,13 +2,21 @@ import { Validaciones } from "./Validaciones.js";
 import { Conexion } from "../Conexion/Conexion.js";
 import { Carrera } from "../Model/Carrera.js";
 
+/**
+ * Clase que proporciona métodos para interactuar con los eventos.
+ */
 export class Evento {
-    // Método para obtener todos los eventos
+
+    /**
+     * Método para obtener todos los eventos.
+     * 
+     * @returns {Promise} - Una promesa que se resuelve con la lista de eventos o se rechaza con un error.
+     */
     get_All_Evento() {
         return new Promise((resolve, reject) => {
             let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Evento/Get_All_Evento.php`;
             var xhttp = Conexion.crearXMLHttpRequest("GET", url);
-    
+
             xhttp.onreadystatechange = function() {
                 if (this.readyState === 4) {
                     if (this.status === 200) {
@@ -19,17 +27,22 @@ export class Evento {
                     }
                 }
             };
-    
+
             xhttp.send();
         });
     }
 
-    // Método para obtener un evento por su ID
+    /**
+     * Método para obtener un evento por su ID.
+     * 
+     * @param {number} id - El ID del evento a obtener.
+     * @returns {Promise} - Una promesa que se resuelve con el evento obtenido o se rechaza con un error.
+     */
     get_Evento_By_Id(id) {
         return new Promise((resolve, reject) => {
             let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Evento/Get_Evento_By_Id.php?id=${id}`;
             var xhttp = Conexion.crearXMLHttpRequest("GET", url);
-    
+
             xhttp.onreadystatechange = function() {
                 if (this.readyState === 4) {
                     if (this.status === 200) {
@@ -45,8 +58,11 @@ export class Evento {
         });
     }
 
-
-    // Método para eliminar un evento
+    /**
+     * Método para eliminar un evento.
+     * 
+     * @param {number} $id - El ID del evento a eliminar.
+     */
     delete_Evento($id) {
 
         let carrera = new Carrera();
@@ -105,7 +121,9 @@ export class Evento {
 
     }
 
-    // Método para crear un evento
+    /**
+     * Método para crear un evento.
+     */
     create_Evento() {
         var $nombre = document.querySelector('#nombre').value;
         var $descripcion = document.querySelector('#descripcion').value;
@@ -144,7 +162,11 @@ export class Evento {
         xhttp.send();
     }
 
-    // Método para actualizar un evento
+    /**
+     * Método para actualizar un evento.
+     * 
+     * @param {number} $id - El ID del evento a actualizar.
+     */
     update_Evento($id) {
         var $nombre = document.querySelector('#nombre').value;
         var $descripcion = document.querySelector('#descripcion').value;

@@ -2,9 +2,16 @@
 
 require_once('../../ConnectionDB/ConnectionDB.php');
 
+/**
+ * Clase que gestiona las operaciones relacionadas con los tokens en la base de datos.
+ */
 class Token {
 
-    // Obtiene todos los tokens.
+    /**
+     * Obtiene todos los tokens asociados a un usuario por su ID.
+     * @param int $id El ID del usuario.
+     * @return void No devuelve ningún valor, pero imprime el resultado en formato JSON.
+     */
     public static function get_All_Token_By_Id($id) {
         $database = new ConnectionDB();
         $conexion = $database->getConnect();
@@ -20,7 +27,11 @@ class Token {
         }
     }
 
-    // Genera un nuevo token.
+     /**
+     * Genera un nuevo token para un usuario.
+     * @param int $id El ID del usuario para el cual se genera el token.
+     * @return void No devuelve ningún valor, pero imprime el token generado en formato JSON.
+     */
     public static function generar_Token($id) {
         $database = new ConnectionDB();
         $conexion = $database->getConnect();

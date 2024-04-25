@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Clase para gestionar la conexión a la base de datos.
+ */
 class ConnectionDB {
     
     private const HOST = "localhost";
@@ -8,7 +11,10 @@ class ConnectionDB {
     private const DATABASE = "carrerasbicicletas";
 
     
-    //Obtiene una conexión a la base de datos.
+    /**
+     * Obtiene una conexión a la base de datos.
+     * @return PDO|null Retorna un objeto PDO si la conexión fue exitosa, de lo contrario retorna null.
+     */
     public function getConnect(): ?PDO {
         $hostDB = "mysql:host=" . self::HOST . ";dbname=" . self::DATABASE;
 

@@ -2,9 +2,15 @@
 
 require_once '../../ConnectionDB/ConnectionDB.php';
 
+/**
+ * Clase que gestiona las operaciones relacionadas con los eventos en la base de datos.
+ */
 class Evento {
     
-    // Obtiene todos los eventos.
+       /**
+     * Obtiene todos los eventos.
+     * @return void No devuelve ningún valor, pero imprime el resultado en formato JSON.
+     */
     public static function get_All_Evento() {
         $database = new ConnectionDB();
         $conexion = $database->getConnect();
@@ -19,7 +25,11 @@ class Evento {
         }
     }
 
-    // Obtiene un evento por su id.
+    /**
+     * Obtiene un evento por su ID.
+     * @param int $id El ID del evento que se desea obtener.
+     * @return void No devuelve ningún valor, pero imprime el resultado en formato JSON.
+     */
     public static function get_Evento_By_Id($id) {
         $database = new ConnectionDB();
         $conexion = $database->getConnect();
@@ -35,7 +45,13 @@ class Evento {
         }
     }
 
-    // Crea un nuevo evento.
+      /**
+     * Crea un nuevo evento.
+     * @param string $nombre El nombre del evento.
+     * @param string $descripcion La descripción del evento.
+     * @param string $fecha_inicio La fecha de inicio del evento.
+     * @return void No devuelve ningún valor, pero realiza la operación de creación en la base de datos.
+     */
     public static function create_Evento($nombre, $descripcion, $fecha_inicio) {
         $database = new ConnectionDB();
         $conexion = $database->getConnect();
@@ -52,7 +68,11 @@ class Evento {
         }
     }
 
-    // Elimina un evento por su id.
+      /**
+     * Elimina un evento por su ID.
+     * @param int $id El ID del evento que se desea eliminar.
+     * @return void No devuelve ningún valor, pero realiza la operación de eliminación en la base de datos.
+     */
     public static function delete_Evento($id) {
         $database = new ConnectionDB();
         $conexion = $database->getConnect();
@@ -67,7 +87,15 @@ class Evento {
         }
     }
 
-    // Actualiza un evento.
+    
+    /**
+     * Actualiza un evento.
+     * @param int $id El ID del evento que se desea actualizar.
+     * @param string $nombre El nuevo nombre del evento.
+     * @param string $descripcion La nueva descripción del evento.
+     * @param string $fecha_inicio La nueva fecha de inicio del evento.
+     * @return void No devuelve ningún valor, pero realiza la operación de actualización en la base de datos.
+     */
     public static function update_Evento($id, $nombre, $descripcion, $fecha_inicio) {
         $database = new ConnectionDB();
         $conexion = $database->getConnect();

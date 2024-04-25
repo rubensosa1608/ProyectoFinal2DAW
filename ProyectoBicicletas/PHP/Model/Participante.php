@@ -2,9 +2,15 @@
 
 require_once '../../ConnectionDB/ConnectionDB.php';
 
+/**
+ * Clase que gestiona las operaciones relacionadas con los participantes en la base de datos.
+ */
 class Participante {
     
-    // Obtiene todos los participantes con detalles de bicicleta.
+     /**
+     * Obtiene todos los participantes con detalles de bicicleta.
+     * @return void No devuelve ningún valor, pero imprime el resultado en formato JSON.
+     */
     public static function get_All_Participante() {
         $database = new ConnectionDB();
         $conexion = $database->getConnect();

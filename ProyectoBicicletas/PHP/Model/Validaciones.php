@@ -1,11 +1,20 @@
 <?php
 
+/**
+ * Clase que contiene métodos para validar campos de eventos y carreras.
+ */
 class Validaciones{
 
-   // Método para validar campos de eventos
+    /**
+    * Método para validar campos de eventos.
+    * @param string $nombre El nombre del evento a validar.
+    * @param string $descripcion La descripción del evento a validar.
+    * @param string $fecha_inicio La fecha de inicio del evento a validar.
+    * @return mixed Retorna un array de errores si los hay, de lo contrario devuelve true.
+    */
 function validarCamposEventos($nombre, $descripcion, $fecha_inicio) {
     // Expresión regular para validar nombre del evento
-    $nombreRegex = '/^[a-zA-Z0-9_\s]+$/';
+    $nombreRegex = '/^[a-zA-ZñÑ0-9_\s]+$/';
 
     // Array para almacenar mensajes de error
     $errores = [];
@@ -39,10 +48,16 @@ function validarCamposEventos($nombre, $descripcion, $fecha_inicio) {
     return true;
 }
 
-// Método para validar campos de carreras
+/**
+    * Método para validar campos de carreras.
+    * @param string $nombre El nombre de la carrera a validar.
+    * @param string $fecha_inicio La fecha de inicio de la carrera a validar.
+    * @param string $ubicacion La ubicación de la carrera a validar.
+    * @return mixed Retorna un array de errores si los hay, de lo contrario devuelve true.
+    */
 function validarCamposCarreras($nombre, $fecha_inicio, $ubicacion) {
     // Expresión regular para validar nombre de la carrera
-    $nombreRegex = '/^[a-zA-Z0-9_\s]+$/';
+    $nombreRegex = '/^[a-zA-ZñÑ0-9_\s]+$/';
 
     // Array para almacenar mensajes de error
     $errores = [];

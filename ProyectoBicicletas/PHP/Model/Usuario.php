@@ -2,9 +2,15 @@
 
 require_once('../../ConnectionDB/ConnectionDB.php');
 
+/**
+ * Clase que gestiona las operaciones relacionadas con los usuarios en la base de datos.
+ */
 class Usuario {
 
-    // Obtiene todos los usuarios
+      /**
+     * Obtiene todos los usuarios almacenados en la base de datos.
+     * @return void No devuelve ningún valor, pero imprime el resultado en formato JSON.
+     */
     public static function getAllUsuarios() {
         $database = new ConnectionDB();
         $conexion = $database->getConnect();    
@@ -19,7 +25,12 @@ class Usuario {
         }
     }
 
-    // Comprueba si el usuario existe
+      /**
+     * Comprueba si un usuario existe en la base de datos y verifica su contraseña.
+     * @param string $nombre El nombre de usuario.
+     * @param string $password La contraseña del usuario.
+     * @return void No devuelve ningún valor, pero imprime el resultado.
+     */
     public static function comprobarUsuario($nombre, $password) {
         $database = new ConnectionDB();
         $conexion = $database->getConnect();    

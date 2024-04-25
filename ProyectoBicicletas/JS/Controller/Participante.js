@@ -1,8 +1,14 @@
 import { Conexion } from "../Conexion/Conexion.js";
 import { tablaParticipante } from "../Tablas/TablaParticipante.js";
 
+/**
+ * Clase que proporciona métodos para interactuar con los participantes.
+ */
 export class Participante {
-    // Método para obtener todos los participantes
+
+    /**
+     * Método para obtener todos los participantes.
+     */
     get_All_Participante() {
         let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Participante/Get_All_Participante.php`;
         var container = document.querySelector('#datos-container');
