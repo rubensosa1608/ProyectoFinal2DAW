@@ -140,37 +140,111 @@ El despliegue de nuestro Sistema de Gestión de Eventos y Carreras de bicicletas
 
 #### 1. Identificación de Necesidades del Sector Productivo y Proyectos Relacionados
 
-- **Investigación de mercado:** 
-- **Análisis de la demanda:** 
-- **Investigación de competidores:** 
-- **Análisis de tendencias:** 
+- **Investigación de mercado:**
+
+ El mercado objetivo al queremos llegar sería al de entusiastas o aficionados del ciclismo de cualquier edad y nivel de experiencia que tengan, en el cual estos aficionados encuentren eventos en los cuales socializar y competir.
+
+- **Análisis de la demanda:**
+
+  Hay una demanda que está creciendo sobre eventos de carreras de bicicletas, tanto en zonas urbanas como en zonas rurales, los aficionados buscan experiencias únicas o experiencias competitivas en las cuales mejorar sus habilidades o desafiar sus habilidades.
+
+- **Investigación de competidores:**
+
+  Ahora mismo, hay varias aplicaciones de eventos de carreras de bicicletas ofreciendo varios tipos de carreras, por ejemplo,de montaña, de carretera , urbanas, etc..
+
+- **Análisis de tendencias:**
+
+  Las tendencias actuales en el mundo del ciclismo incluyen un mayor interés en eventos de aventura y carreras de larga distancia.
 
 #### 2. Aportación y Beneficios a la Empresa
 
 - **Diversificación de ingresos**
+
+  Organizar eventos de carreras de bicicletas puede ser una forma secundaria de generar ingresos extras para la empresa, más allá de tus actividades comerciales principales.
+
 - **Fortalecimiento de la marca**
+
+  Organizar eventos de carreras de bicicletas puede mejorar la visibilidad y el reconocimiento de la empresa, sobre todo entre los entusiastas del ciclismo y la gente local.
+
 - **Desarrollo de relaciones comunitarias**
+
+  Organizar eventos de carreras de bicicletas puede hacer que tu marca sea más visible y reconocida, especialmente entre los apasionados del ciclismo y la comunidad local.
+
 - **Oportunidades de marketing y promoción**
+
+  Los eventos ofrecen oportunidades para promocionar los productos o servicios de la empresa a través de patrocinios, presencia en el lugar del evento, material promocional y marketing en línea y offline.
+
 - **Clientes potenciales**
+
+  Los eventos de carreras de bicicletas atraen a participantes y espectadores interesados en el ciclismo, lo que puede generar clientes potenciales para la empresa, especialmente si ofrece productos o servicios relacionados con el ciclismo.
+
 - **Impacto positivo en el equipo**
+
+  Involucrar al equipo de la empresa en la organización de eventos de carreras de bicicletas puede mejorar la moral, el trabajo en equipo y la satisfacción laboral, al tiempo que brinda oportunidades para el desarrollo profesional y personal.
+
 - **Generación de ingresos indirectos**
+
+  Además de los ingresos directos generados por la organización de eventos, la empresa puede beneficiarse de ingresos indirectos a través de ventas adicionales en el lugar del evento, como alimentos y bebidas, productos promocionales y servicios relacionados.
 
 #### 3. Costes Hardware y Software
 
 - **Ordenadores para el desarrollo**
+
+Requisitos del portátil:
+
+Para la CPU cogeremos un i7, para la RAM elegiremos con 16 de Ram, Para el almacenamiento con un ssd de 512GB, con un controlador gráfico de Intel Iris Xe Graphics y usaremos windows 11 como sistema operativo
+El portátil será el Lenovo IdeaPad 3 con precio de 530,50 €.
+
 - **Servidor**
+
+Requisitos del servidor: 
+
+Procesador: Intel Xeon X5650 2.67 GHz (12 cores, 24 threads)
+Memoria RAM: 32 GB DDR3 1333 MHz (4 x 8 GB)
+Almacenamiento: 2 x 300 GB SAS 15K RPM HDD
+Placa base: Lenovo System Planar x3650M4 HD
+Tarjeta gráfica: Intel 3400MHD
+Tarjeta de red: 2 x Gigabit Ethernet
+Slot de expansión: 4 x PCIe x16, 2 x PCIe x8, 1 x PCIe x4
+
+El servidor que cogeremos es el LENOVO 00AL055 con un precio de 273,00 €.
+
 - **Licencias**
+
+En este caso no usaremos ninguna licencia sin contar la del windows 11 del portátil y la de windows server del servidor.
+  
 - **Hostings**
+
+  El hosting de la aplicación dependerá de cual son las preferencias que queramos de él, en este caso hay tres opciones buenas que son BlueHost, HostGator y SiteGround los tres son muy parecidos, todos oscilan por los mismos precios en las opciones más básicas e    intermedias pero hostGator es más barato en sus tres planes.
 
 #### 4. Comparativa y Elección de Precios
 
 - **Hostings:**
+  
   - BlueHost
+
+Bluehost es un proveedor de hosting web ampliamente reconocido por su fiabilidad y facilidad de uso. Ofrece una amplia gama de servicios de hosting, incluyendo hosting compartido, VPS y hosting dedicado, así como herramientas optimizadas para WordPress.
+ 
   - HostGator
+
+    HostGator es otro proveedor de hosting web líder, conocido por su fiabilidad y variedad de servicios de hosting. Ofrece una amplia gama de opciones de hosting, desde hosting compartido hasta servidores dedicados, con un enfoque en la facilidad de uso y la          escalabilidad
+
   - SiteGround (Elegido)
+
+    SiteGround destaca por su rendimiento excepcional y su enfoque en la seguridad y el soporte técnico de alta calidad. Ofrece una variedad de servicios de hosting, incluyendo hosting compartido, VPS y hosting dedicado, con un énfasis especial en la                   optimización para WordPress.
+
 - **Licencias**
+  
+  Licencias de software no usa ya que es todo en php y js puro. Pero si se usara se podrían usar react para el javascript y laravel para el php debido a sus grandes comunidades, que te ayudarán si hay algún problema.
+
 - **Copias de seguridad**
+
+Para las copias de seguridad usaremos la funcionalidad de github para clonar el repositorio del proyecto y poderlo guardar en un disco externo o en algún ordenador principal.
+  
 - **Dominios**
+
+  El dominio dependería de como se llamara la aplicacion en este caso la llame CABICI. Asique el dominio seria algo como CABICI.com
+   El dominio en ionos el primer año está a 1 € al año y en el segundo año cuesta 14,95 €.
 
 ### Bibliografía
 
