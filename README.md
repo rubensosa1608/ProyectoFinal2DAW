@@ -29,7 +29,6 @@ El proyecto requiere de un sistema de login que funcione con generación de toke
 Se realizó un análisis del proyecto y se diseñó la base de datos, así como la estructura de carpetas del proyecto.
 
 #### Diagrama de base de Datos:
-[Ver diagrama](link_al_diagrama)
 
 #### Relaciones:
 
