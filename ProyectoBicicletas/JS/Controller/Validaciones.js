@@ -7,7 +7,7 @@ export class Validaciones {
      */
     validarCamposLogin(username, password) {
         // Expresiones regulares para validar nombre de usuario y contraseña
-        const nombreRegex = /^[a-zA-ZñÑ0-9_\s]+$/;
+        const usernameRegex = /^[a-zA-ZñÑ0-9_\s]+$/;
         const passwordRegex = /^[a-zA-ZñÑ0-9!@#$%^&*()_+]+$/;
 
         // Array para almacenar mensajes de error
