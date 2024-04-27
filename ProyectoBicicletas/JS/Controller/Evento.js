@@ -1,6 +1,6 @@
 import { Validaciones } from "./Validaciones.js";
 import { Conexion } from "../Conexion/Conexion.js";
-import { Carrera } from "../Model/Carrera.js";
+import { Carrera } from "./Carrera.js";
 
 /**
  * Clase que proporciona métodos para interactuar con los eventos.
