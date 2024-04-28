@@ -1,3 +1,5 @@
+Al descargar quitar la carpeta de ProyectoFinal2DAW y solo usar la de proyectobicicletas ya que se usa como padre para las rutas.
+
 # Gestor de carreras de bicicleta.
 
 ## DESCRIPCIÓN DEL PROYECTO.
