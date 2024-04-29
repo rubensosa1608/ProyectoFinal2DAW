@@ -171,7 +171,7 @@ export class Carrera {
      * @param {number} $id - El ID del evento del que se desean obtener las carreras.
      * @returns {Promise} - Una promesa que se resuelve con el número de carreras obtenidas o se rechaza con un error.
      */
-    get_All_Carrera_By_Evento($id){
+    get_All_Carrera_By_EventoNumero($id){
         return new Promise((resolve, reject) => {
             let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Carrera/Get_All_Carrera_By_Evento.php?id_evento=${$id}`;
             let xhttp = Conexion.crearXMLHttpRequest("GET", url);
@@ -184,6 +184,28 @@ export class Carrera {
                         let numeroCarreras = Object.keys(carrera).length;
 
                         resolve(numeroCarreras);
+                        
+                    } else {
+                        reject(new Error('Error al obtener carreras'));
+                    }
+                }
+            };
+            xhttp.send();
+        });
+    }
+
+    get_All_Carrera_By_Evento($id){
+        return new Promise((resolve, reject) => {
+            let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Carrera/Get_All_Carrera_By_Evento.php?id_evento=${$id}`;
+            let xhttp = Conexion.crearXMLHttpRequest("GET", url);
+
+            xhttp.onreadystatechange = function () {
+                if (this.readyState === 4) {
+                    if (this.status === 200) {
+                        console.log(this.responseText);
+                        let carrera = JSON.parse(this.responseText);
+                       
+                        resolve(carrera);
                         
                     } else {
                         reject(new Error('Error al obtener carreras'));

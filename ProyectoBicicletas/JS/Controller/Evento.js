@@ -67,7 +67,7 @@ export class Evento {
 
         let carrera = new Carrera();
 
-        carrera.get_All_Carrera_By_Evento($id)
+        carrera.get_All_Carrera_By_EventoNumero($id)
         .then(carrera =>{
 
             if(carrera == 0){

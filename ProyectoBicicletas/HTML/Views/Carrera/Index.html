@@ -20,6 +20,11 @@
 
 <div id="carrera-container">
     <h1>Carreras</h1>
+    <div id="eventos-container">
+        <select style="color: black;" id="eventos-select" title="Seleccione un evento">
+            <option value="0">Seleccione un evento</option>
+        </select>
+    </div>
     <div id="datos-containerCarrera"></div>
 </div>
 
@@ -27,10 +32,52 @@
 
 <script type="module">
   import { Carrera } from "../../../JS/Controller/Carrera.js";
+  import { Evento } from "../../../JS/Controller/Evento.js";
   import { Token } from "../../../JS/Controller/Token.js";
+  import { tablaCarrera } from "../../../JS/Tablas/TablaCarrera.js";
   const token = new Token();
 
-  
+  $(document).ready(function() {
+  const evento = new Evento();
+  const carrera = new Carrera();
+  evento.get_All_Evento()
+    .then(eventos => {
+      const select = document.getElementById('eventos-select');
+      $.each(eventos, function(index, evento) {
+        const option = document.createElement('option');
+        option.value = evento.Id;
+        option.text = evento.Nombre;
+        select.appendChild(option);
+      });
+      select.addEventListener('change', function() {
+  const selectedEventId = select.value;
+  if(selectedEventId == 0){
+    carrera.get_All_Carrera()
+    .then(carreras => {
+        tablaCarrera(carreras);
+    })
+    .catch(error => {
+            console.error('Error:', error.message);
+          });
+  }else{
+  carrera.get_All_Carrera_By_Evento(selectedEventId)
+    .then(numeroCarreras => {
+      const container = document.querySelector('#eventos-container');
+      const filteredResults = document.createElement('div');
+      tablaCarrera(numeroCarreras);
+          })
+          .catch(error => {
+            console.error('Error:', error.message);
+          });
+        }
+      });
+    })
+    .catch(error => {
+      console.error('Error:', error.message);
+    });
+});
+
+
   let userDataToken = sessionStorage.getItem('userData');
 
         if(userDataToken == undefined){

@@ -138,3 +138,8 @@ select option {
 .message{
   font-size: 50px;
 }
+
+#eventos-container{
+  align-items: center;
+  text-align: center;
+}

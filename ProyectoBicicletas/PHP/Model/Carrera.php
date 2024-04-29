@@ -28,6 +28,22 @@ class Carrera {
         }
     }
 
+    public static function get_All_Carrera_Evento($idEvento) {
+        $database = new ConnectionDB();
+        $conexion = $database->getConnect();
+
+        $sentencia = $conexion->prepare('SELECT carrera.*
+            FROM carrera
+            WHERE id_evento = :idEvento');
+
+        if ($sentencia->execute()) {
+            $resultado = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+            echo json_encode($resultado);
+        } else {
+            echo "false";
+        }
+    }
+
     /**
      * Obtiene una carrera por su ID.
      * @param int $id El ID de la carrera a obtener.
@@ -128,7 +144,12 @@ class Carrera {
         $database = new ConnectionDB();
         $conexion = $database->getConnect();
 
-        $sentencia = $conexion->prepare('SELECT * FROM carrera where id_evento=:id_evento');
+        $sentencia = $conexion->prepare('SELECT *, evento.nombre AS nombre_evento, categoria_carrera.nombre AS nombre_categoria 
+        FROM carrera 
+        JOIN evento ON carrera.id_evento = evento.id 
+        JOIN categoria_carrera ON carrera.id_categoria_carrera = categoria_carrera.id 
+        WHERE id_evento = :id_evento');
+
         $sentencia->bindParam(':id_evento', $id_evento);
 
         if($sentencia->execute()){
