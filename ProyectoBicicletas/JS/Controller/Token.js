@@ -37,47 +37,50 @@ export class Token {
      * @param {string} $rutaIr - La ruta a la que redirigir si el token es válido (opcional).
      * @param {string} $rutaVolver - La ruta a la que redirigir si el token ha expirado (opcional).
      */
-    comprobar_Token($id, $token, $rutaIr = null, $rutaVolver = null){
-
+    comprobar_Token($id, $token, $rutaIr = null, $rutaVolver = null) {
         let datos = "&id_usuario=" + $id;
         let url = `http://localhost/ProyectoBicicletas/PHP/ApiRest/Token/Get_All_Token_By_Id.php?${datos}`;
         var xhttp = Conexion.crearXMLHttpRequest("GET", url);
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 let tokens = JSON.parse(this.responseText);
-
+                let tokenEncontrado = false;
+    
                 // Recorro todos los tokens que devuelve la consulta
                 tokens.forEach(token => {
-
                     // Si el token es el mismo
-                    if (token.Token == $token) {  
+                    if (token.Token == $token) {
                         // Obtengo la fecha de hoy y las fechas de creación y expiración
                         let Nuevafecha = new Date();
                         let fechaCreacion = new Date(token.Fecha_creacion);
-                        let fechaExpiracion = new Date(token.Fecha_expiracion);  
-
+                        let fechaExpiracion = new Date(token.Fecha_expiracion);
+    
                         // Compruebo si la fecha de hoy está entre la fecha de creación y la fecha de expiración
-                        if (Nuevafecha >= fechaCreacion  && Nuevafecha <= fechaExpiracion) {
-
-                            if($rutaIr == null){
-                                // No se especificó una ruta de redirección
-                            }else{
+                        if (Nuevafecha >= fechaCreacion && Nuevafecha <= fechaExpiracion) {
+                            if ($rutaIr != null) {
                                 window.location.href = $rutaIr;
                             }
-                        }else{
+                        } else {
                             alert("Su sesión ha expirado");
-                            if($rutaVolver == null){
+                            if ($rutaVolver == null) {
                                 // No se especificó una ruta de redirección en caso de expiración
-                            }else{
-                                window.location.href = "/ProyectoBicicletas/index.html";
+                            } else {
+                                window.location.href = $rutaVolver;
                             }
                         }
+                        tokenEncontrado = true; // Se encontró el token
                     }
                 });
-
+                if (!tokenEncontrado) {
+                    alert("Su Token de sesion no existe");
+                    if ($rutaVolver != null) {
+                        // No se especificó una ruta de redirección en caso de expiración
+                        window.location.href = $rutaVolver;
+                    }
+                }
             }
         };
-
+    
         xhttp.send();
     }
 

@@ -89,11 +89,17 @@ window.addEventListener('load', comprobar_Token);
 
 function comprobar_Token() {
     const userData = sessionStorage.getItem('userData');
+    
+    const data = JSON.parse(userData);
+    const userToken = data.userToken.replace(/^"(.*)"$/, '$1');
+    const userId = data.userID;
+
+    if(userToken == "" || userToken == null){
+        alert("No tienes token");  
+    window.location.href = "/ProyectoBicicletas/index.html";
+    }
 
     if (userData) {
-        const data = JSON.parse(userData);
-        const userId = data.userID;
-        const userToken = data.userToken.replace(/^"(.*)"$/, '$1');
         let rutaVolver = "/ProyectoBicicletas/index.html";
         token.comprobar_Token(userId, userToken, null, rutaVolver);
     }
